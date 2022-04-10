@@ -1,5 +1,5 @@
 DROP TABLE IF EXISTS department;
-DROP TABLE IF EXISTS positions;
+DROP TABLE IF EXISTS position;
 DROP TABLE IF EXISTS employee;
 
 CREATE TABLE department(
@@ -8,7 +8,7 @@ CREATE TABLE department(
   dept_description TEXT
 );
 
-CREATE TABLE positions(
+CREATE TABLE position(
   id INTEGER AUTO_INCREMENT PRIMARY KEY,
   title VARCHAR(30) NOT NULL,
   salary DECIMAL NOT NULL,

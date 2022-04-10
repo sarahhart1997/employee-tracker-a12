@@ -57,12 +57,58 @@ function viewEmployees() {
 
 // Add a department 
 function addDepartment() {
-
+    inquier.prompt([
+        {
+            name: 'name', 
+            type: 'input', 
+            message: 'What is the department name?',
+        }
+    ]).then(answer => {
+        db.query('INSERT INTO department SET ?', 
+        
+        {name: answer.department_name}, 
+        
+        (err) => {
+            if (err) throw err;
+            console.table(res);
+            console.log("Department Successfully Added");
+        })
+    })
 }
 
 // Add a position (promt name, salery and department for the role)
 function addPosition() {
-
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "position_name", 
+            message: "What is the position name?"
+        }, 
+        {
+            type: "input", 
+            name: "position_salary", 
+            message: "What is this position's salary?"
+        }, 
+        {
+            type: "input", 
+            name: "position_deparmtnet_id", 
+            message: "What is the department ID?"
+        },
+    ]).then(answer => {
+        db.query('INSERT INTO position SET ?', 
+        
+        {
+            title: answer.position_name,
+            salary: answer.position_salary,
+            department_id: answer.position_department_id
+        }, 
+        
+        (err) => {
+            if (err) throw err;
+            console.table(res);
+            console.log("Position Successfully Added");
+        })
+    })
 }
 
 // Add an employee (employee's first name, last name, role, manager)
