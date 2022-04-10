@@ -31,48 +31,39 @@ app.get('/', (req, res) => {
 // view all departments
 function viewDepartments() {
     db.query('SELECT * FROM department', (err, res) => {
-        if (err) {
-            res.status(500).json({ error: err.message });
-            return;
-        }
-        res.json({
-            message: 'success',
-            data: rows
-        });
+        if (err) throw err;
+
+        console.table(res);
     });
 };
 
 // view all positions
 function viewPositions() {
     db.query('SELECT * FROM positions', (err, res) => {
-        if (err) {
-            res.status(500).json({ error: err.message });
-            return;
-        }
-        res.json({
-            message: 'success',
-            data: rows
-        });
+        if (err) throw err;
+
+        console.table(res);
     });
 };
 
 // view all employees 
 function viewEmployees() {
     db.query('SELECT * FROM employee', (err, res) => {
-        if (err) {
-            res.status(500).json({ error: err.message });
-            return;
-        }
-        res.json({
-            message: 'success',
-            data: rows
-        });
+        if (err) throw err; 
+
+        console.table(res)
     });
 };
 
 // Add a department 
+function addDepartment() {
 
-// Add a role (promt name, salery and department for the role)
+}
+
+// Add a position (promt name, salery and department for the role)
+function addPosition() {
+
+}
 
 // Add an employee (employee's first name, last name, role, manager)
 
