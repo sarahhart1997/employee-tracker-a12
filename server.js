@@ -112,7 +112,39 @@ function addPosition() {
 }
 
 // Add an employee (employee's first name, last name, role, manager)
-
+function addEmployee() {
+    inquirer.prompt([
+        {
+            type: "input", 
+            name: "first_name", 
+            message: "Employee's first name?"
+        }, 
+        {
+            type: "input", 
+            name: "last_name", 
+            message: "Employee's last name?"
+        }, 
+        {
+            type: "input", 
+            name: "position_id", 
+            message: "What is the employee's position ID?"
+        }, 
+    ]).then(answer => {
+        db.query('INSERT INTO employee SET ?', 
+        
+        {
+            first_name: answer.first_name,
+            last_name: answer.last_name,
+            position_id: answer.position_id,
+        }, 
+        
+        (err) => {
+            if (err) throw err;
+            console.table(res);
+            console.log("Department Successfully Added");
+        })
+    })
+}
 // Update an employee role (select an employee to update and their new role). 
 
 // Default response for any other request (Not Found)
