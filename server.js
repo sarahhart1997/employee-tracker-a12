@@ -28,6 +28,56 @@ app.get('/', (req, res) => {
     });
 });
 
+// view all departments
+function viewDepartments() {
+    db.query('SELECT * FROM department', (err, res) => {
+        if (err) {
+            res.status(500).json({ error: err.message });
+            return;
+        }
+        res.json({
+            message: 'success',
+            data: rows
+        });
+    });
+};
+
+// view all positions
+function viewPositions() {
+    db.query('SELECT * FROM positions', (err, res) => {
+        if (err) {
+            res.status(500).json({ error: err.message });
+            return;
+        }
+        res.json({
+            message: 'success',
+            data: rows
+        });
+    });
+};
+
+// view all employees 
+function viewEmployees() {
+    db.query('SELECT * FROM employee', (err, res) => {
+        if (err) {
+            res.status(500).json({ error: err.message });
+            return;
+        }
+        res.json({
+            message: 'success',
+            data: rows
+        });
+    });
+};
+
+// Add a department 
+
+// Add a role (promt name, salery and department for the role)
+
+// Add an employee (employee's first name, last name, role, manager)
+
+// Update an employee role (select an employee to update and their new role). 
+
 // Default response for any other request (Not Found)
 app.use((req, res) => {
     res.status(404).end();
