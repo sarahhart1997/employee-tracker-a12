@@ -8,7 +8,7 @@ VALUES
 (wardrobe)
 (sound)
 
-INSERT INTO role (title, salary, department_id)
+INSERT INTO positions (title, salary, department_id)
 VALUES 
 (director, 3500, 3)
 (1st_assistant director, 3000, 3)
