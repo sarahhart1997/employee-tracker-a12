@@ -20,6 +20,7 @@
   "homepage": "https://github.com/sarahhart1997/employee-tracker-a12#readme",
   "dependencies": {
     "express": "^4.17.3",
+    "inquirer": "^8.2.2",
     "mysql2": "^2.3.3"
   },
   "devDependencies": {
