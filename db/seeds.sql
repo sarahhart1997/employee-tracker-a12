@@ -31,6 +31,7 @@ VALUES
 ('boom_operator', 2000, 6);
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES
 ('tori', 'layne', 1, NULL),
 ('natalie', 'pace', 2, 1),
 ('sarah', 'hart', 3, 2),

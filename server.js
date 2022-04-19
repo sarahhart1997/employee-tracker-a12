@@ -18,7 +18,7 @@ const db = mysql.createConnection(
         host: 'localhost',
         user: 'root',
         password: 'hskid1',
-        database: 'election'
+        database: 'employee_tracker'
     },
     console.log('Connected to the election database.')
 );
@@ -30,6 +30,61 @@ app.get('/', (req, res) => {
         message: 'Hello World'
     });
 });
+
+// The function that makes all things run
+function letsGo() {
+    
+    inquirer.prompt({
+        type: "list", 
+        name: "action", 
+        message: "What would you like to do?", 
+        choices: [
+            "View Departments",
+            "View Positions",
+            "View Employees",
+            "Add a Deparmtent", 
+            "Add a Position", 
+            "Add an Employee",
+            "Update Employee Position", 
+            "Exit"
+        ]
+    }).then(function ({action}) {
+        switch (action) {
+
+            case "View Departments":
+                viewDepartments();
+                break;
+            
+            case "View Positions": 
+                viewPositions();
+                break;
+            
+            case "View Employees":
+                viewEmployees();
+                break;
+            
+            case "Add a Department":
+                addDepartment();
+                break
+            
+            case "Add a Position":
+                addPosition();
+                break
+            
+            case "Add an Employee":
+                addEmployee();
+                break
+            
+            case "Update Employee Position":
+                updatePosition();
+                break
+            
+            case "Exit":
+                connect.end();
+                break;
+        };
+    }) 
+}
 
 // view all departments
 function viewDepartments() {
@@ -203,4 +258,4 @@ app.listen(PORT, () => {
     console.log(`server running on port ${PORT}`);
 });
 
-
+letsGo();
