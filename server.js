@@ -3,6 +3,7 @@ const express = require('express')
 const inputCheck = require('./utils/inputCheck');
 const { endianness } = require('os');
 const inquirer = require('inquirer');
+const { connect } = require('http2');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -148,6 +149,49 @@ function addEmployee() {
     })
 }
 // Update an employee role (select an employee to update and their new role). 
+function updatePosition(employees) {
+    
+    var query = `SELECT * FROM roles`;
+
+    connect.query(query, function(err, res) {
+        if (err) throw err;
+        console.table(res);
+
+        const roles = res.map(({ id, title }) => ({
+            value: id, name: `${title}`
+        }));
+
+        promptUpdate(employees, roles)
+    })
+}
+
+function promptUpdate(employees, roles) {
+    inquirer.prompt ([
+        {
+            type: "list", 
+            name: "employee", 
+            message: "Which employee are you updating?", 
+            choices: employees
+        },
+        {
+            type: "list", 
+            name: "role", 
+            message: "What is the employee's new role?", 
+            choices: roles
+        }
+    ]).then(function (answer) {
+        var query = `UPDATE employee SET role_id = ? WHERE id =?`
+
+        connect.query(query,
+            [
+                answer.role, answer.employees
+            ], 
+            function (err, res) {
+                if (err) throw err;
+                console.table(res);
+            })
+    })
+}
 
 // Default response for any other request (Not Found)
 app.use((req, res) => {

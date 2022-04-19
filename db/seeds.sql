@@ -1,4 +1,4 @@
-INSERT INTO department (name)
+INSERT INTO department (department_name)
 VALUES
 ('camera'),
 ('art_department'),
@@ -6,7 +6,7 @@ VALUES
 ('grip_electric'),
 ('hair_makeup'),
 ('wardrobe'),
-('sound'),
+('sound');
 
 INSERT INTO positions (title, salary, department_id)
 VALUES 
@@ -24,11 +24,11 @@ VALUES
 ('ge_production_assistant', 2000, 4),
 ('key_makeup_artist', 2800, 5),
 ('key_hairstylist', 2800, 5),
-('key_costumer', 2800, 5)
+('key_costumer', 2800, 5),
 ('production_designer', 3000, 2),
 ('set_designer', 2800, 2),
 ('sound_mixer', 2800, 6),
-('boom_operator', 2000, 6),
+('boom_operator', 2000, 6);
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 ('tori', 'layne', 1, NULL),
@@ -49,4 +49,4 @@ INSERT INTO employee (first_name, last_name, role_id, manager_id)
 ('frank', 'williams', 16, NULL),
 ('randy', 'tompson', 17, NULL),
 ('alice', 'daniels', 18, NULL),
-('grace', 'hanks', 19, 18),
+('grace', 'hanks', 19, 18);
